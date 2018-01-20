@@ -9,6 +9,9 @@ page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
+ignore 'javascripts/mathjax/README.md'
+ignore 'javascripts/mathjax/LICENSE'
+
 helpers do
     def link_to_post title
         return link_to(title, '/posts/'+urlify(title) + '.html')
