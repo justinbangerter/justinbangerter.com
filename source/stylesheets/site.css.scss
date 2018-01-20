@@ -40,7 +40,7 @@ a {
     &:visited { color: $heading-text-color; }
   }
   position: relative;
-  margin: 1.3em 0;
+  margin: 2em 0;
 }
 i.frac {
   background: url("../img/transfrac.png") no-repeat scroll left center/3.75em 3.125em transparent;
@@ -86,7 +86,7 @@ i.frac {
     text-align: center;
     display: inline-block;
     list-style: none outside none;
-    margin-right: 2em;
+    margin-right: 2%;
   }
   & i {
     box-shadow: #2b2b2b 1px 1px 0 0, inset #888888 0 1px 0;
