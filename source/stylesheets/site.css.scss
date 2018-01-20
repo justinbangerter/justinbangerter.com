@@ -1,21 +1,20 @@
 $heading-text-color: #ff8f00;
+$action-button-color: #ff8f00;
 
-html {
-    text-align: center;
-}
 body {
-  display: inline-block;
+  line-height: 1.7em;
+  text-align: center;
   background-color: #2b2b2b;
   color: #FFF;
   font-family: 'Fauna One', serif;
+}
+div.main {
+  display: inline-block;
   margin: 10vh 0;
   padding: 0 2vh;
   text-align: left;
   max-width: 30em;
 }
-
-p { line-height: 1.5em; }
-
 
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Telex', sans-serif;
@@ -23,6 +22,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 { font-size: 2.75em; }
+h2, h3 { margin: 2em 0 1em 0; }
 
 a {
   color: rgba($heading-text-color, 1);
@@ -63,6 +63,7 @@ i.frac {
     repeat: no-repeat;
     attachment: scroll;
     position: center center;
+    background-color: #e68100;
   }
 }
 
@@ -71,16 +72,9 @@ i.frac {
 .glyph-home { @include glyph('home'); }
 .glyph-projector { @include glyph('projector'); }
 .glyph-nameplate_alt { @include glyph('nameplate_alt'); }
+.glyph-message_new { @include glyph('message_new'); }
 
 .nav {
-  & li i {
-    box-shadow: #2b2b2b 1px 1px 0 0, inset #888888 0 1px 0;
-    -moz-border-radius: 0.25em;
-    -webkit-border-radius: 0.25em;
-    border-radius: 0.25em;
-    padding: 0.1875em;
-    background-color: #e68100;
-  }
   & a, &a:visited { color: $heading-text-color; }
   & li:hover a { color: #3c7dc4; }
   & li:hover i { background-color: #3c7dc4; }
@@ -92,8 +86,42 @@ i.frac {
     text-align: center;
     display: inline-block;
     list-style: none outside none;
-    min-width: 3em;
+    margin-right: 2em;
+  }
+  & i {
+    box-shadow: #2b2b2b 1px 1px 0 0, inset #888888 0 1px 0;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    border-radius: 0.25em;
+    padding: 0.1875em;
+    background-color: #e68100;
   }
 }
 
 pre.prettyprint { width: 40em; }
+
+.post-list {
+    padding: 0;
+    line-height: 3em;
+    & li {
+        list-style: none;
+        font-size: 1.5em;
+    }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.btn, .btn:visited {
+  display: inline-block;
+  border-radius: 5px;
+  padding: .2em .6em;
+  font-family: 'Telex', serif;
+  background-color: $action-button-color;
+  color: #000;
+}

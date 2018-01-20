@@ -1,0 +1,16 @@
+.column
+  :markdown
+    ## February 27, 2012
+    I just stumbled upon a great solution to rendering math in multiple browsers.  <a title="MathJax" href="http://www.mathjax.org/docs/2.0/platforms/index.html">MathJax</a> uses JavaScript to interpret MathML and LaTeX on your website and display it in any browser.
+
+    To begin using it, just paste the following into your header.  (For those of you who use wordpress, that's your **header.php** file, which you can find under **Appearance &gt; Editor &gt; Header** ).
+
+        <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+
+    The best place for it is right above the `</head>` tag.
+
+    That's it!  Your math will now be displayed properly to anyone with JavaScript enabled.  If you use MathML, your math will be displayed properly to anyone who uses Firefox, even if they do not enable JavaScript.
+
+    If you want to optimize your installation, <a title="MathJax can also be configured." href="http://www.mathjax.org/docs/1.1/configuration.html">MathJax can also be configured</a>.

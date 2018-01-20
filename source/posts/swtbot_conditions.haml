@@ -1,0 +1,112 @@
+.column
+  :markdown
+    ##March 12, 2012
+    ###Fixed Waiting Periods: What Are You Waiting For?
+    
+    I've seen a lot of test code that looks like this:
+
+        /*Test deletion from a list*/
+        SWTBot bot = new SWTBot();
+
+        //Remove an entry
+        bot.buttonWithLabel("Delete").click();
+
+        //Wait for it to disappear
+        bot.wait(250);
+       
+        //Check that the list is empty
+        String listId = "brokenList";
+        int listSize = bot.listWithId(listId).itemCount()
+        if(listSize != 0) {
+          Assert.fail("An item was not deleted from " + listId);
+        }
+    
+   
+    Fixed waits like this are pretty standard, but they can cause problems later. If this is a resource-intensive proccess, your test could break in these cases:
+   
+    * The product slows down (example: the developers fixed a racing condition at the cost of speed).
+    * The computer that runs the tests slows down (example: a shared server starts running tests from other products).
+   
+    Fixed waits can also make your code harder to read, because it isn't always easy to see what's being waited on.
+   
+    So what do you do?
+    ###Conditions: Look Before You Leap
+   
+    Consider this alternative:
+   
+        //Test deletion from a list
+        SWTBot bot = new SWTBot();
+        bot.buttonWithLabel("Delete").click();
+       
+        String listId = "brokenList";
+        SWTBotList list = bot.listWithId(listId);
+       
+        // Wait for the list item to disappear
+        try {
+          ICondition listIsEmpty = new ListHasRowCount(list, 0);
+          bot.waitUntil(listIsEmpty, 1000);
+        }
+        catch (TimeoutException e) {
+          Assert.fail("An item was not deleted from " + listId);
+        }
+   
+    This is a faster, safer way to wait for events. Here's what the custom condition looks like:
+   
+        /**
+        * An encapsulated condition: test() returns true if the 
+        * specified list contains the specified number of items 
+        * at the time of invocation.
+        *
+        * @author Justin Bangerter
+        */
+        public class ListHasRowCount extends DefaultCondition {
+       
+          /** The list under testing */
+          private SWTBotList list;
+       
+          /** The number of rows to test for */
+          private int itemCt;
+       
+          /**
+          * Create a condition: test() returns true if the list
+          * contains itemCt items.
+          *
+          * @param list the list to check
+          * @param itemCt how many items should be in the list
+          */
+          public ListHasItems(SWTBotList list, int itemCt) {
+            this.list = list;
+            this.itemCt = itemCt;
+          }
+       
+          /*
+          * @see org.eclipse.swtbot.swt.finder.waits.ICondition#test()
+          */
+          @Override
+          public boolean test() throws Exception {
+            return this.itemCt == list.itemCount();
+          }
+       
+          /*
+          * @see org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
+          */
+          @Override
+          public String getFailureMessage() {
+            String listMsg = "The list {0} contained {1} items.";
+            String listId = list.getId();
+            int itemCt = list.itemCount();
+            return MessageFormat.format(listMsg, listId, itemCt);
+          }
+        }
+     
+    I didn't put any parameter checking in this example, but it can be nice to have if you need it.
+   
+    Important: Good failure messages should simply declare the discovered state and say nothing about the expected state. This is because conditions can be passed into both bot.waitWhile(...) and bot.waitUntil(...).
+   
+    Suppose we use this message instead:
+   
+        "The list did not have " + this.itemCt + " items."
+   
+    If you use the condition in bot.waitUntil(...);, and the test fails, the message will say "The list did not have 0 items." That makes sense.
+   
+    However, if you use the condition in bot.waitWhile(...);, and the test fails the message will say the same thing. That doesn't make sense, because we want the list to have more than 0 items. The "failure" message will erroneously claim that the state was exactly what it should have been, which it was not.

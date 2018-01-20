@@ -1,0 +1,65 @@
+.column
+  :markdown
+    ##February 7, 2014
+    ### Live.js and Middleman
+
+    [Live.js](http://livejs.com/) and [Middleman](http://middlemanapp.com) are
+    both pretty cool, and you can use them together to harness the power of 
+    style injection.
+
+    If you're a Mac user, stop reading and go use [CodeKit](http://incident57.com/codekit/).
+
+    Okay, maybe read [this](http://css-tricks.com/style-injection-is-for-winners/) first.
+
+    If you're like me, and you use Linux, read on.
+
+    __What is style injection?__  It means that your stylesheets get loaded, but the page
+    does not.
+
+    __Why is this good?__ Because you can restyle modal dialogs without having to
+    reopen them over and over again.  Seriously, it's the bomb.  If you don't believe me
+    go check out [Chris Coyier's Blog](http://css-tricks.com/style-injection-is-for-winners/)
+    and watch his awesome example.
+    
+    __So what is Middleman?__ Middleman is a static site generator that helps you do fancy
+    stuff like compress your css, html, and javascript and get automatic cache busting
+    while using preprocessors like HAML, SASS, and CoffeeScript.
+
+    **GASP! (that was a long sentence)**
+    
+    Middleman gives you this neat trick called livereload to automatically
+    refresh your page for you during development. It was a pain to set up in Linux,
+    and the company is going proprietary.  Oh, and it doesn't inject your
+    CSS.  Instead it reloads the entire page.  We don't want that.  We want live.js.
+
+    __Live.js__ spams the crap out of your development server
+    with http head requests.  It checks the timestamp on your documents.  If
+    a document is updated, it gets reloaded on the page.  Yeah, a browser plugin
+    might be better, but it gets the job done, and it's awesome, because you
+    get style injection.
+
+    That's right, stylesheets get reloaded without refreshing the page.
+
+    To do this, include the partial in your layout.
+
+    in layout.erb, just above the &lt;/body> tag
+
+        <%= partial 'live.js' %>
+
+    In your partial, check the environment, and load live.js if in development.
+
+    and in _live.js.erb
+
+        <% if environment == :development %>
+          <script>
+            // source found at http://livejs.com/live.js
+          </script>
+        <% end %>
+
+    Why do I not keep the source in a javascript file?  Well, I don't want the file
+    to be on the production server.  Making it into an ERB snippet allows me to exclude it
+    in production mode.
+
+    Boom.  Now I can edit in VIM and still get automatic HTML refreshing in my browser as
+    well as style injection.  It works whether you like HAML, ERB, Less, SASS, CoffeeScript,
+    or plain old vanilla.

@@ -1,0 +1,119 @@
+.column
+  :markdown
+    ##February 19, 2012
+    ###Vectors came from Quaternions
+
+    Before vectors, there were quaternions. Quaternions are the next step after complex numbers from real numbers.
+   
+    A complex number may be written as $$z = x + \hat{i} y$$
+    Where $$\hat{i} = - 1$$
+   
+    A quaternion may be written as $$q = w + \hat{i}x + \hat{j} y + \hat{k}z$$
+   
+    w is the scalar part, and the rest is the vector part.
+   
+    If you don't know how to multiply i, j, and k, please learn how before continuing.
+
+    ###On to Vectors
+   
+    A vector is just a quaternion where the scalar part is zero (w=0).
+    $$\vec{v}= x \hat{i}+ y\hat{j} + z\hat{k}$$
+   
+    The basis vectors are $$\hat{i}, \hat{j}, \hat{k}$$
+   
+    You can also write a vector like this:
+    $$\vec{v}= (x,y,z)$$
+    ###Points in ℝ 3
+   
+    So, a vector can be written as $$\vec{v}= (x,y,z)$$
+   
+    But a point can also be written as $$P = (x,y,z)$$
+   
+    This may seem ambiguous at first, but it isn't. A point is a special vector that describes a distance from the origin.
+    ###Distance Between Points
+   
+    A vector can represent a distance between points.
+   
+    All that is needed to find this distance is to subtract one point from another.
+   
+    So if
+   
+    $$P = (3,4,5)$$ $$Q= (0,0,0)$$
+   
+    Then the vector from Q to P is
+    $$\vec{QP} = \vec{P} - \vec{Q}$$
+    $$\vec{QP} = (3, 4, 5)$$
+   
+    Remember, subtract the start from the end to get the distance. This might seem backwards, but think about it.
+   
+    If you started at work, 3 miles from home and got lunch 4 miles from home in the same direction, you would have moved 1 mile away from home.
+   
+    That's because
+    
+    (end)-(start)=(distance) 
+
+    4 - 3 = 1
+   
+    On your way back from lunch to work, you start 4 miles away and end 3 miles away. You moved -1 mile away from home (1 mile toward home).
+   
+    Another example:
+    $$P = (3, 4, 5)$$
+    $$Q = (-1, 7, 3)$$
+    $$\vec{QP} = (4, -3, 2)$$
+
+.column
+  :markdown
+    ###Adding/Subtracting Vectors
+   
+    When adding and subtracting vectors, just add or subtract each component to create a new vector.
+   
+    Adding two vectors is like putting the tail of one vector at the head of another and finding vector that makes a straight path from the beginning of the first vector to the end of the second.
+   
+    Subtracting two vectors is like adding the negative of the second vector to the first vector.
+
+    ###Multiplying Vectors
+   
+    Let's multiply two vectors in algebraic form, using the distributive property.
+
+  %p
+    $$\vec{v}_{1} = x_{1}\hat{i} + y_{1}\hat{j} + z_{1}\hat{k}$$
+  %p
+    $$\vec{v}_{2}=x_{2}\hat{i}+y_{2}\hat{j}+z_{2}\hat{k}$$
+  %p
+    $$\vec{v}_{1} \cdot \vec{v}_{2} =  x_{1}\hat{i}(x_{2}\hat{i}+y_{2}\hat{j}+z_{2}\hat{k}) +$$
+  %p
+    $$    y_{1}\hat{j}(x_{2}\hat{i}+y_{2}\hat{j}+z_{2}\hat{k}) +$$
+  %p
+    $$    z_{1}\hat{k}(x_{2}\hat{i}+y_{2}\hat{j}+z_{2}\hat{k})$$
+  %p
+    We can group these terms into squared and mixed basis vectors.
+  %p
+    $$\vec{v}_{1} \cdot \vec{v}_{2} =  x_{1}x_{2}\hat{i}^{2}+y_{1}y_{2}\hat{j}^{2}+z_{1}z_{2}\hat{k}^{2}+$$
+  %p
+    $$    y_{1}z_{2}\hat{j}\hat{k}+z_{1}y_{2}\hat{k}\hat{j}+ x_{1}z_{2}\hat{i}\hat{k}+$$
+  %p
+    $$    z_{1}x_{2}\hat{k}\hat{i}+ x_{1}y_{2}\hat{i}\hat{j}+y_{1}x_{2}\hat{j}\hat{i}$$
+  :markdown 
+    You can count these terms to make sure I didn't miss any. There should be 9.
+   
+    The first three terms (in the parentheses) are called the dot product. The rest are the cross-product.
+   
+    See how the cross product is the product of the cross terms. The dot product is the ... well... dot the i's cross the t's you know...
+   
+    I don't know why it's called the dot product. Anyway, we can simplify this a bit.
+   
+    Remember the rules for multiplying i, j, and k?
+  %p
+    $$\vec{v}_{1}*\vec{v}_{2}= -(x_{1}x_{2}+y_{1}y_{2}+z_{1}z_{2})+$$
+  %p
+    $$(y_{1}z_{2}-z_{1}y_{2})\hat{i}+$$
+  %p
+    $$-(x_{1}z_{2}+z_{1}x_{1})\hat{j}+$$
+  %p
+    $$(x_{1}y_{2}-y_{1}x_{2})\hat{k}$$
+   
+  :markdown
+    The first term is the dot product.  Notice how it has no basis vectors? It is a scalar.
+   
+    The cross product is the vector part.  That is, it is the sum of the terms with basis vectors.
+   

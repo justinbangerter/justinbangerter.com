@@ -1,0 +1,49 @@
+.column
+  :markdown
+    ##October 25, 2013
+    ###Alternating function in JavaScript
+
+    Recently, I came up with a neat second-order function in JavaScript.
+    When called, it alternates between two supplied functions.  It's a bit of a toy.
+    If you need a behavior to change, based on the state of an app, you should just 
+    read the state.
+
+
+    This could be useful when you have a button that alternates its behavior when clicked.
+    For example, you may want to enable editing in a text field on the first click,
+    but submit a form on the second click.
+
+        /**
+         * Provides a function that alternates between the
+         * provided functions when called
+         *
+         * @param f1 called on odd invocations
+         * @param f2 called on even invocations
+         * @returns {Function} Arguments are passed to the
+         *   supplied functions.
+         */
+         function alternate(f1, f2) {
+           var toggle, f;
+           toggle = true;
+           return function () {
+             f = toggle ? f1 : f2;
+             toggle = !toggle;
+             return f.apply(this, arguments);
+           }
+         }
+
+
+    Here is an example use for an edit button (which happens to be a submit button for a form).
+
+        function enableEditAjax(id) {
+
+          //...
+
+          $('#edit-btn-' + id).click(alternate(function () {
+            //hides div, shows textarea
+            toggleTextArea(id, true); 
+            return false; //prevent form submission
+          }, function () {
+            return true;//form will be submitted
+          }));
+        }    

@@ -12,17 +12,20 @@
     <%= javascript_include_tag "site" %>
   </head>
   <body>
+    <!-- some body element styles can be problematic for old browsers -->
+    <div class="main">
     <h1 class="main-header">
         <i class="frac"></i>
         <a href="/">Justin's Blog</a>
     </h1>
     <ul class="nav">
-        <li class="nav-blog"><a href="/"><i class="glyph-home"></i><div>Blog</div></a></li>
-        <li><a href="/software"><i class="glyph-cogwheels"></i><div>Software</div></a></li>
-        <li><a href="/tutoring"><i class="glyph-projector"></i><div>Tutoring</div></a></li>
-        <li><a href="/about"><i class="glyph-nameplate_alt"></i><div>About</div></a></li>
+      <li class="nav-blog"><a href="/"><i class="glyph-home"></i><div>Blog</div></a></li>
+      <li><a href="/software"><i class="glyph-cogwheels"></i><div>Software</div></a></li>
+      <li><a href="/tutoring"><i class="glyph-projector"></i><div>Tutoring</div></a></li>
+      <li><a href='https://docs.google.com/forms/d/e/1FAIpQLSdJUHSae3KKpvuq8A-jH3EMJ0ZvVmLIgTgSv7GaN4GQZE9KmQ/viewform?usp=pp_url&entry.384236828&entry.2039244917'><i class="glyph-message_new"></i><div>E-Mail</div></a></li>
     </ul>
     <%= yield %>
+    </div>
     <script src='/javascripts/mathjax/MathJax.js?config=TeX-AMS_HTML.js'></script>
     <script>
         MathJax.Hub.Config({
