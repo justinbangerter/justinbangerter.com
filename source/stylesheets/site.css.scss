@@ -24,6 +24,8 @@ h1,h2,h3,h4,h5,h6 {
 h1 { font-size: 2.75em; }
 h2, h3 { margin: 2em 0 1em 0; }
 
+.nav, h1, h2, h3, h4, h5, h6, p { max-width: 93vw; }
+
 a {
   color: rgba($heading-text-color, 1);
   text-decoration: none;
