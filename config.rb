@@ -39,4 +39,7 @@ end
 configure :build do
   activate :minify_css
   activate :minify_javascript
+  ignore 'javascripts/mathjax/**'
+  ignore 'img/glyph/**'
+  ignore 'javascripts/prettify/**'
 end
