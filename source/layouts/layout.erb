@@ -28,6 +28,7 @@
       <li class="nav-blog"><a href="/"><i class="glyph-home"></i><div>Blog</div></a></li>
       <li><a href="/software"><i class="glyph-cogwheels"></i><div>Software</div></a></li>
       <li><a href="/tutoring"><i class="glyph-projector"></i><div>Tutoring</div></a></li>
+      <li class="js-remove"><a href="#"><i class="glyph-message_new"></i><div>JavaScript Disabled</div></a></li>
       <script>
         document.write([
             '<li>',
@@ -69,5 +70,13 @@
         }(document, 'script'));
     </script>
     <script src='/javascripts/prettify/run_prettify.js'></script>
+    <script>
+        (function() {
+            var els = document.getElementsByClassName('js-remove');
+            for(var i = 0; i < els.length; i++){
+                els[i].parentNode.removeChild(els[i]);
+            }
+        })();
+    </script>
   </body>
 </html>
