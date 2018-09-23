@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= current_page.data.title || "Justin's Blog" %></title>
     <link href='http://fonts.googleapis.com/css?family=Telex|Fauna+One&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <script>
+        function addy(a, b) { return a + '@' + b; }
+        function std_addy() { return addy('jnbangerter','gmail.com'); }
+        function mailto(url, txt) { return '<a href="mailto:' + url + '">' + txt + '</a>' };
+        function contact() { return mailto(std_addy(), std_addy()); }
+    </script>
     <%= stylesheet_link_tag "normalize" %>
     <%= stylesheet_link_tag "sunburst" %>
     <%= stylesheet_link_tag "site" %>
@@ -22,7 +28,16 @@
       <li class="nav-blog"><a href="/"><i class="glyph-home"></i><div>Blog</div></a></li>
       <li><a href="/software"><i class="glyph-cogwheels"></i><div>Software</div></a></li>
       <li><a href="/tutoring"><i class="glyph-projector"></i><div>Tutoring</div></a></li>
-      <li><a href='https://docs.google.com/forms/d/e/1FAIpQLSdJUHSae3KKpvuq8A-jH3EMJ0ZvVmLIgTgSv7GaN4GQZE9KmQ/viewform?usp=pp_url&entry.384236828&entry.2039244917'><i class="glyph-message_new"></i><div>E-Mail</div></a></li>
+      <script>
+        document.write([
+            '<li>',
+            mailto(
+                std_addy(),
+                '<i class="glyph-message_new"></i><div>E-Mail</div>'
+            ),
+            '</li>'
+        ].join(''));
+      </script>
     </ul>
     <%= yield %>
         <div style="margin-top:10em;">
