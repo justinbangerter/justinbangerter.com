@@ -15,7 +15,6 @@
     <%= stylesheet_link_tag "normalize" %>
     <%= stylesheet_link_tag "sunburst" %>
     <%= stylesheet_link_tag "site" %>
-    <%= javascript_include_tag "site" %>
   </head>
   <body>
     <!-- some body element styles can be problematic for old browsers -->
@@ -24,7 +23,7 @@
         <i class="frac"></i>
         <a href="/">Justin's Blog</a>
     </h1>
-    <ul class="nav">
+    <ul class="nav sticky top">
       <li class="nav-blog"><a href="/"><i class="glyph-home"></i><div>Blog</div></a></li>
       <li><a href="/software"><i class="glyph-cogwheels"></i><div>Software</div></a></li>
       <li><a href="/tutoring"><i class="glyph-projector"></i><div>Tutoring</div></a></li>
@@ -70,13 +69,6 @@
         }(document, 'script'));
     </script>
     <script src='/javascripts/prettify/run_prettify.js'></script>
-    <script>
-        (function() {
-            var els = document.getElementsByClassName('js-remove');
-            for(var i = 0; i < els.length; i++){
-                els[i].parentNode.removeChild(els[i]);
-            }
-        })();
-    </script>
+    <%= javascript_include_tag "site" %>
   </body>
 </html>
