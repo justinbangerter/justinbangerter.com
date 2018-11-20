@@ -8,6 +8,7 @@ end
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page '/email/index.php', :directory_index => false
 
 ignore 'javascripts/mathjax/README.md'
 ignore 'javascripts/mathjax/LICENSE'
