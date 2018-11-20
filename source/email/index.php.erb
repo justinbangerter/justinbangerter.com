@@ -22,10 +22,10 @@ if(isset($_POST['email'])) {
         died('You forgot to fill out on of the fields.');
     }
 
-    $first_name = $_POST['first_name'];
+    $first_name = trim($_POST['first_name']);
     $bustah = $_POST['bustah'];
-    $email_from = $_POST['email'];
-    $comments = $_POST['comments'];
+    $email_from = trim($_POST['email']);
+    $comments = trim($_POST['comments']);
 
     $error_message = "";
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
