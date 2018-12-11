@@ -35,6 +35,10 @@ a {
   &:visited { color: #cc7200; }
 }
 
+.box-shadow {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .main-header {
   & a {
     position: relative;
@@ -133,3 +137,61 @@ pre.prettyprint { width: 40em; }
   position: fixed;
   top: 0;
 }
+
+.contactform {
+    @extend .box-shadow;
+    width: 100%;
+    max-width: 400px;
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 80px auto;
+    box-sizing: border-box;
+}
+.contactform h2 { font-size: 2em; padding: 0; }
+.contactform h3 { font-size: 1em; padding: 0; }
+.contactform textarea, .contactform input {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: white;
+    margin: 0 0 5px;
+    padding: 10px;
+    &:hover {
+        transition: border-color 0.3s ease-in-out;
+        border: 1px solid #aaa;
+    }
+    &:focus {
+        border: 1px solid #aaa;
+    }
+}
+.contactform textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+}
+.contactform button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #FBC547;
+    color: black;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+    &:hover {
+        background: darken(#FBC547, 10%);
+        transition: background-color 0.3s ease-in-out;
+    }
+    &:active {
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+}
+.contactform fieldset {
+    display: flex;
+    border: medium none;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+}
+
