@@ -22,7 +22,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 { font-size: 2.75em; }
-h2, h3 { margin: 2em 0 1em 0; }
+h2, h3 { margin: 1em 0; }
 
 .nav, h1, h2, h3, h4, h5, h6, p { max-width: 90vw; }
 
@@ -144,7 +144,7 @@ pre.prettyprint { width: 40em; }
     max-width: 400px;
     background: #070707;
     padding: 25px;
-    margin: 80px auto;
+    margin: 0 auto;
     box-sizing: border-box;
 }
 .contactform h2 { font-size: 2em; padding: 0; }
