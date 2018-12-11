@@ -11,9 +11,6 @@
     forEach(document.getElementsByClassName('sticky'), function(el) {
         var originalOffset = el.offsetTop;
         var originalPadding = el.nextElementSibling.style.paddingTop;
-        window.onload = function() {
-            el.style.width = (el.clientWidth + 20 )+ 'px';
-        };
         window.onscroll = function() {
             // disable sticky nav in case the page isn't tall enough for it
             if (originalOffset > ( window.scrollMaxY - el.offsetHeight )) {

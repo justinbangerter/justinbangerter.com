@@ -136,6 +136,7 @@ pre.prettyprint { width: 40em; }
 .stuck.top {
   position: fixed;
   top: 0;
+  width: 100% !important;
 }
 
 .contactform {
